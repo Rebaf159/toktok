@@ -1,0 +1,90 @@
+name: toktok_app # Projenizin adı
+description: "A new Flutter project for bike sharing." # Projenizin açıklaması
+publish_to: 'none' # pub.dev'e yayınlamayı engeller
+
+version: 1.0.0+1 # Uygulamanızın versiyonu ve build numarası
+
+environment:
+  # Flutter 3.32.1 gibi çok yeni sürümler, güncel Dart 3.x SDK'larını kullanır.
+  # Flutter dokümantasyonlarındaki güncel örnekler genellikle '^3.x.y' formatını kullanır.
+  # Örneğin, Dart 3.8.0 ve üzeri ama 4.0.0'dan küçük bir versiyon için:
+  sdk: '^3.8.0'
+  # Alternatif olarak, eğer Flutter 3.32.1'in özel bir Dart SDK'sı varsa
+  # (örneğin Dart 3.9.0 içeriyorsa) sdk: '^3.9.0' da kullanılabilir.
+  # flutter --version komutu ile gelen Dart versiyonunu kontrol edebilirsiniz.
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  #--- TEMEL UI ve FONKSİYONELLİK ---
+  cupertino_icons: ^1.0.8 # iOS stili ikonlar için (Genellikle varsayılan gelir)
+  intl: ^0.18.1 # Tarih/saat ve sayı formatlama (para birimi vb.) için WalletScreen'de kullanıldı.
+
+  #--- HTTP İSTEKLERİ (API İLETİŞİMİ) ---
+  # Tüm backend etkileşimleri için (SignIn, SignUp, Wallet, FindBike, Unlocking vb.)
+  http: ^1.2.1 # Temel HTTP istekleri için
+  # VEYA daha gelişmiş bir istemci isterseniz:
+  # dio: ^5.4.3 # Gelişmiş HTTP istemcisi (interceptor, form data vb. destekler)
+
+  #--- YEREL DEPOLAMA ---
+  # Kullanıcı token'ı, tema tercihi gibi verileri saklamak için
+  shared_preferences: ^2.2.3
+
+  #--- HARİTA VE KONUM (FindBikeScreen için) ---
+  # Eğer harita özelliği ekleyecekseniz (paket sürümlerini pub.dev'den kontrol edin):
+  # google_maps_flutter: ^2.6.1
+  # geolocator: ^11.0.0
+  permission_handler: ^11.3.1 # EKLENDİ - Konum gibi izinleri yönetmek için (ScanScreen için de gerekli)
+
+  #--- QR KOD OKUMA (UnlockingScreen/ScanScreen için) ---
+  mobile_scanner: ^5.1.0 # EKLENDİ - Modern QR ve barkod okuyucu
+
+  #--- DURUM YÖNETİMİ (Opsiyonel ama önerilir) ---
+  # Proje büyüdükçe state yönetimi için birini seçebilirsiniz (paket sürümlerini pub.dev'den kontrol edin):
+  # provider: ^6.1.2
+  # flutter_riverpod: ^2.5.1
+  # flutter_bloc: ^8.1.5
+
+  #--- JSON SERİLEŞTİRME YARDIMCILARI (Opsiyonel) ---
+  # API'den gelen JSON verilerini model sınıflarına dönüştürmek için kod üretimi ile birlikte.
+  # json_annotation: ^4.9.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  #--- KOD ANALİZİ VE STİL KONTROLÜ ---
+  flutter_lints: ^3.0.2 # Flutter takımı tarafından önerilen lint kuralları (veya daha yenisi)
+
+  #--- KOD ÜRETİMİ (Eğer json_serializable vb. kullanıyorsanız) ---
+  # build_runner: ^2.4.9
+  # json_serializable: ^6.8.0
+
+flutter:
+  uses-material-design: true
+
+  #--- VARLIKLAR (ASSETS) ---
+  # Projenizin kök dizininde 'assets' ve onun altında 'images', 'fonts' gibi klasörler oluşturun.
+  assets:
+    - assets/images/logo.png # Örnek logo yolu
+    - assets/images/default_avatar.png # Örnek varsayılan avatar
+    - assets/images/bike_marker_icon.png # Örnek harita için bisiklet ikonu
+    # Eğer bir klasördeki tüm varlıkları eklemek isterseniz:
+    # - assets/icons/
+
+  #--- FONT (YAZI TİPLERİ) ---
+  # Özel fontlar kullanacaksanız:
+  # fonts:
+  #   - family: Montserrat
+  #     fonts:
+  #       - asset: assets/fonts/Montserrat-Regular.ttf
+  #       - asset: assets/fonts/Montserrat-Bold.ttf
+  #         weight: 700
+  #       - asset: assets/fonts/Montserrat-Italic.ttf
+  #         style: italic
+  #   - family: OpenSans
+  #     fonts:
+  #       - asset: assets/fonts/OpenSans-Regular.ttf
+  #       - asset: assets/fonts/OpenSans-SemiBold.ttf
+  #         weight: 600
